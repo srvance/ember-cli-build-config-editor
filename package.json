@@ -1,0 +1,37 @@
+{
+  "name": "ember-cli-blueprint-build-config-editor",
+  "version": "0.1.0",
+  "description": "Utility for ember blueprints to use to modify ember-cli-build.js",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/"
+  ],
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha tests/**/*-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srvance/ember-cli-blueprint-build-config-editor.git"
+  },
+  "keywords": [
+    "ember-addon"
+  ],
+  "author": "Stephen Vance <steve@vance.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srvance/ember-cli-blueprint-build-config-editor/issues"
+  },
+  "homepage": "https://github.com/srvance/ember-cli-blueprint-build-config-editor#readme",
+  "dependencies": {
+    "recast": "^0.11.22"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "mocha-eslint": "^3.0.1"
+  }
+}
