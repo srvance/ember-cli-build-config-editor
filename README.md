@@ -59,6 +59,17 @@ for unquoted property keys rather than the save but more verbose quoted keys we 
 npm test
 ```
 
+### Understanding JavaScript ASTs
+
+The AST for [the basic configuration](./tests/fixtures/single-config-block.js) can be found in
+[this SVG](./docs/ember-cli-build-ast.svg) for reference. It was generated from
+[Rappid's JavaScript AST Visualizer](http://resources.jointjs.com/demos/javascript-ast).
+
+The approach used here is based on that for [ember-router-generator](https://github.com/ember-cli/ember-router-generator).
+
+The [DSL for AST types](https://github.com/benjamn/ast-types/blob/master/def/core.js) used by esprima provided great
+insight once I got my head around it.
+
 ## Contributing
 
 Please fork the project and submit pull requests and issues using GitHub.
