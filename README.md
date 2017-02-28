@@ -42,6 +42,17 @@ build.edit('some-addon', {
 fs.writeFileSync('./ember-cli-build.js', build.code());
 ```
 
+## What It Does
+
+The above example modifies `ember-cli-build.js` in the following ways
+
+* Finds the `'some-addon'` key in the options object of your `EmberApp` construction, creating one
+if it doesn't exist
+* For each of the entries in the passed object, it adds property or updates it if it already
+exists with the specified value.
+
+Keys that are not specified are preserved untouched. Added object keys are single-quoted for safety.
+
 ## TODO
 
 * Recurse into complex nested configurations
@@ -49,6 +60,7 @@ fs.writeFileSync('./ember-cli-build.js', build.code());
 * Verify that the types are the same or compatible before updating
 * Allow the configuration key and properties to use identifiers instead of literals when feasible. In normal terms, allow
 for unquoted property keys rather than the save but more verbose quoted keys we use now.
+* Handle other types of Ember projects like addons and engines
 
 ## Development
 
