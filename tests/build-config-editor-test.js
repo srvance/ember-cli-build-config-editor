@@ -89,4 +89,32 @@ describe('Adds configuration', function() {
 
         astEquality(newBuild.code(), readFixture('single-config-block.js'));
     });
+
+    it('recognizes unquoted properties as matching', function() {
+        var source = readFixture('single-config-block-unquoted-properties.js');
+
+        var build = new EmberBuildConfigEditor(source);
+
+        var newBuild = build.edit('some-addon', {
+            booleanProperty: false,
+            numericProperty: 17,
+            stringProperty: 'wow'
+        });
+
+        astEquality(newBuild.code(), source);
+    });
+
+    it('recognizes an unquoted key as matching', function() {
+        var source = readFixture('single-config-block-unquoted-key.js');
+
+        var build = new EmberBuildConfigEditor(source);
+
+        var newBuild = build.edit('someaddon', {
+            booleanProperty: false,
+            numericProperty: 17,
+            stringProperty: 'wow'
+        });
+
+        astEquality(newBuild.code(), source);
+    });
 });
