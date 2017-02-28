@@ -44,9 +44,7 @@ fs.writeFileSync('./ember-cli-build.js', build.code());
 
 ## TODO
 
-* Add CI build
-* Add David and Greenkeeper integrations
-* Recurse into complex nexted configurations
+* Recurse into complex nested configurations
 * Handle configuration property removal
 * Verify that the types are the same or compatible before updating
 * Allow the configuration key and properties to use identifiers instead of literals when feasible. In normal terms, allow
