@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/srvance/ember-cli-build-config-editor.svg?branch=master)](https://travis-ci.org/srvance/ember-cli-build-config-editor)
 [![Dependency Status](https://david-dm.org/srvance/ember-cli-build-config-editor/status.svg)](https://david-dm.org/srvance/ember-cli-build-config-editor) 
 [![devDependency Status](https://david-dm.org/srvance/ember-cli-build-config-editor/dev-status.svg)](https://david-dm.org/srvance/ember-cli-build-config-editor?type=dev)
-
+[![Greenkeeper badge](https://badges.greenkeeper.io/srvance/ember-cli-build-config-editor.svg)](https://greenkeeper.io/)
 
 # Ember CLI Build Config Editor
 
