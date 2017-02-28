@@ -5,6 +5,8 @@
 
 # Ember CLI Build Config Editor
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/srvance/ember-cli-build-config-editor.svg)](https://greenkeeper.io/)
+
 Utility for ember blueprints to use to modify ember-cli-build.js
 
 ## Installation for Use
