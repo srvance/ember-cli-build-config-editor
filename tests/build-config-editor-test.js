@@ -60,5 +60,33 @@ describe('Adds configuration', function() {
         var newBuild = build.edit('some-addon', {});
 
         astEquality(newBuild.code(), source);
-    })
+    });
+
+    it('adds a key with properties to an empty configuration', function() {
+        var source = readFixture('default.js');
+
+        var build = new EmberBuildConfigEditor(source);
+
+        var newBuild = build.edit('some-addon', {
+            booleanProperty: false,
+            numericProperty: 17,
+            stringProperty: 'wow'
+        });
+
+        astEquality(newBuild.code(), readFixture('single-config-block.js'));
+    });
+
+    it('changes the values of existing configuration properties', function() {
+        var source = readFixture('single-config-block-different-values.js');
+
+        var build = new EmberBuildConfigEditor(source);
+
+        var newBuild = build.edit('some-addon', {
+            booleanProperty: false,
+            numericProperty: 17,
+            stringProperty: 'wow'
+        });
+
+        astEquality(newBuild.code(), readFixture('single-config-block.js'));
+    });
 });
