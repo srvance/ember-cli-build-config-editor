@@ -29,7 +29,8 @@ Use this from your Ember blueprint to add or update configuration options in you
 var BuildConfigEditor = require('ember-cli-build-config-editor.js');
 var fs = require('fs');
 
-var source = fs.readFileSync('./ember-cli-build.js');
+// Specify 'utf-8' to force it to be a string instead of a buffer
+var source = fs.readFileSync('./ember-cli-build.js', 'utf-8');
 
 var build = new BuildConfigEditor(source);
 
@@ -53,6 +54,13 @@ exists with the specified value.
 
 Keys that are not specified are preserved untouched. Added object keys are single-quoted for safety.
 
+## Troubleshooting
+
+> TypeError: this.source.charCodeAt is not a function
+
+You have passed a buffer instead of a string to the constructor. Add the `encoding` argument
+when you read the file, e.g., `var source = fs.readFileSync('./ember-cli-build.js', 'utf-8')`.
+  
 ## TODO
 
 * Recurse into complex nested configurations
