@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-build-config-editor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Utility for ember blueprints to use to modify ember-cli-build.js",
   "main": "index.js",
   "files": [
@@ -18,7 +18,7 @@
     "url": "git+https://github.com/srvance/ember-cli-build-config-editor.git"
   },
   "keywords": [
-    "ember-addon"
+    "ember-cli-blueprint"
   ],
   "author": "Stephen Vance <steve@vance.com>",
   "license": "ISC",
