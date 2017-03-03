@@ -1,9 +1,10 @@
 {
   "name": "ember-cli-build-config-editor",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Utility for ember blueprints to use to modify ember-cli-build.js",
   "main": "index.js",
   "files": [
+    "ember-addon-main.js",
     "index.js",
     "lib/"
   ],
