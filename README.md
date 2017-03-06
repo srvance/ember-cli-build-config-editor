@@ -69,6 +69,7 @@ when you read the file, e.g., `var source = fs.readFileSync('./ember-cli-build.j
 * Allow the configuration key and properties to use identifiers instead of literals when feasible. In normal terms, allow
 for unquoted property keys rather than the save but more verbose quoted keys we use now.
 * Handle other types of Ember projects like addons and engines
+* Handle conditional setting, e.g., set this if it doesn't exist
 
 ## Development
 
