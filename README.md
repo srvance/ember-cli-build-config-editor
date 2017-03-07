@@ -3,6 +3,7 @@
 [![devDependency Status](https://david-dm.org/srvance/ember-cli-build-config-editor/dev-status.svg)](https://david-dm.org/srvance/ember-cli-build-config-editor?type=dev)
 [![Greenkeeper badge](https://badges.greenkeeper.io/srvance/ember-cli-build-config-editor.svg)](https://greenkeeper.io/)
 [![Ember Observer](https://emberobserver.com/badges/ember-cli-build-config-editor.svg)](https://emberobserver.com/addons/ember-cli-build-config-editor)
+
 # Ember CLI Build Config Editor
 
 Utility for ember blueprints to use to modify ember-cli-build.js
