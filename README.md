@@ -24,6 +24,26 @@ ember install ember-cli-build-config-editor
 
 ## Usage
 
+Note: This package only handles flat configurations at this point.
+
+### Querying configuration
+
+```js
+var BuildConfigEditor = require('ember-cli-build-config-editor.js');
+var fs = require('fs');
+
+// Specify 'utf-8' to force it to be a string instead of a buffer
+var source = fs.readFileSync('./ember-cli-build.js', 'utf-8');
+
+var build = new BuildConfigEditor(source);
+
+var config = build.retrieve('some-addon');
+
+// Do something with the config
+```
+
+### Adding or editing configuration
+
 Use this from your Ember blueprint to add or update configuration options in your `ember-cli-build.js`.
 
 ```js
@@ -70,7 +90,6 @@ when you read the file, e.g., `var source = fs.readFileSync('./ember-cli-build.j
 * Allow the configuration key and properties to use identifiers instead of literals when feasible. In normal terms, allow
 for unquoted property keys rather than the save but more verbose quoted keys we use now.
 * Handle other types of Ember projects like addons and engines
-* Handle conditional setting, e.g., set this if it doesn't exist
 
 ## Development
 

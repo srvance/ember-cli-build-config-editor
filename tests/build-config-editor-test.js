@@ -118,3 +118,42 @@ describe('Adds configuration', function() {
         astEquality(newBuild.code(), source);
     });
 });
+
+describe('Retrieves configuration', function() {
+  it('returns undefined if the key is not present', function() {
+    var source = readFixture('default.js');
+
+    var build = new EmberBuildConfigEditor(source);
+
+    var config = build.retrieve('some-addon');
+
+    expect(config).to.be.undefined;
+  });
+
+  it('returns an empty object when there is an empty config block', function() {
+    var source = readFixture('empty-config-block.js');
+
+    var build = new EmberBuildConfigEditor(source);
+
+    var config = build.retrieve('some-addon');
+
+    expect(config).to.exist;
+    expect(Object.keys(config)).to.have.lengthOf(0);
+  });
+
+  it('returns the values in the config when present', function() {
+    var source = readFixture('single-config-block.js');
+
+    var build = new EmberBuildConfigEditor(source);
+
+    var config = build.retrieve('some-addon');
+
+    expect(config).to.exist;
+    expect(config.booleanProperty).to.exist;
+    expect(config.booleanProperty).to.be.false;
+    expect(config.numericProperty).to.exist;
+    expect(config.numericProperty).to.equal(17);
+    expect(config.stringProperty).to.exist;
+    expect(config.stringProperty).to.equal('wow');
+  });
+});
