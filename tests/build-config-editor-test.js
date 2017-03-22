@@ -172,4 +172,14 @@ describe('Retrieves configuration', function () {
     expect(config.stringProperty).to.exist;
     expect(config.stringProperty).to.equal('wow');
   });
+
+  it('returns undefined if the configuration cannot be found', function() {
+    var source = readFixture('separate-config-block.js');
+
+    var build = new EmberBuildConfigEditor(source);
+
+    var config = build.retrieve('some-addon');
+
+    expect(config).to.be.undefined;
+  });
 });
