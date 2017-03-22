@@ -21,7 +21,7 @@ describe('Initialization', function () {
   });
 });
 
-describe('Adds configuration', function () {
+describe('Adds inline configuration', function () {
   it('changes nothing if no key is supplied', function () {
     var source = readFixture('default.js');
 
@@ -116,6 +116,22 @@ describe('Adds configuration', function () {
     });
 
     astEquality(newBuild.code(), source);
+  });
+});
+
+describe('Handles separate configuration', function() {
+  it('gives throws an error when the configuration cannot be found', function() {
+    var source = readFixture('separate-config-block.js');
+
+    var build = new EmberBuildConfigEditor(source);
+
+    expect(function() {
+      build.edit('some-addon', {
+        booleanProperty: true,
+        numbericProperty: 42,
+        stringProperty: 'amazing'
+      });
+    }).to.throw('Configuration object could not be found');
   });
 });
 
