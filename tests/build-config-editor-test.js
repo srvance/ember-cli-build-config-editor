@@ -119,9 +119,9 @@ describe('Adds inline configuration', function () {
   });
 });
 
-describe('Handles separate configuration', function() {
-  it('gives throws an error when the configuration cannot be found', function() {
-    var source = readFixture('separate-config-block.js');
+describe('Handles missing configuration', function() {
+  it('throws an error when the configuration cannot be found', function() {
+    var source = readFixture('missing-config-block.js');
 
     var build = new EmberBuildConfigEditor(source);
 
@@ -174,7 +174,7 @@ describe('Retrieves configuration', function () {
   });
 
   it('returns undefined if the configuration cannot be found', function() {
-    var source = readFixture('separate-config-block.js');
+    var source = readFixture('missing-config-block.js');
 
     var build = new EmberBuildConfigEditor(source);
 
