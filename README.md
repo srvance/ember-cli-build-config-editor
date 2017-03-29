@@ -82,15 +82,6 @@ Keys that are not specified are preserved untouched. Added object keys are singl
 You have passed a buffer instead of a string to the constructor. Add the `encoding` argument
 when you read the file, e.g., `var source = fs.readFileSync('./ember-cli-build.js', 'utf-8')`.
   
-## TODO
-
-* Recurse into complex nested configurations
-* Handle configuration property removal
-* Verify that the types are the same or compatible before updating
-* Allow the configuration key and properties to use identifiers instead of literals when feasible. In normal terms, allow
-for unquoted property keys rather than the save but more verbose quoted keys we use now.
-* Handle other types of Ember projects like addons and engines
-
 ## Development
 
 ### Installation for Development
