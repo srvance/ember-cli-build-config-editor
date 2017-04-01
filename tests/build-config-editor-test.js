@@ -119,6 +119,22 @@ describe('Adds inline configuration', function () {
   });
 });
 
+describe('Adds separate configuration', function() {
+  it('edits a non-inline config', function() {
+    var source = readFixture('separate-config-block.js');
+
+    var build = new EmberBuildConfigEditor(source);
+
+    var newBuild = build.edit('some-addon', {
+      booleanProperty: true,
+      numericProperty: 42,
+      stringProperty: 'amazing'
+    });
+
+    astEquality(newBuild.code(), readFixture('separate-config-block-different-values.js'));
+  });
+});
+
 describe('Handles missing configuration', function() {
   it('throws an error when the configuration cannot be found', function() {
     var source = readFixture('missing-config-block.js');
@@ -128,7 +144,7 @@ describe('Handles missing configuration', function() {
     expect(function() {
       build.edit('some-addon', {
         booleanProperty: true,
-        numbericProperty: 42,
+        numericProperty: 42,
         stringProperty: 'amazing'
       });
     }).to.throw('Configuration object could not be found');
@@ -136,41 +152,61 @@ describe('Handles missing configuration', function() {
 });
 
 describe('Retrieves configuration', function () {
-  it('returns undefined if the key is not present', function () {
-    var source = readFixture('default.js');
+  describe('Inline confugration', function() {
+    it('returns undefined if the key is not present', function () {
+      var source = readFixture('default.js');
 
-    var build = new EmberBuildConfigEditor(source);
+      var build = new EmberBuildConfigEditor(source);
 
-    var config = build.retrieve('some-addon');
+      var config = build.retrieve('some-addon');
 
-    expect(config).to.be.undefined;
+      expect(config).to.be.undefined;
+    });
+
+    it('returns an empty object when there is an empty config block', function () {
+      var source = readFixture('empty-config-block.js');
+
+      var build = new EmberBuildConfigEditor(source);
+
+      var config = build.retrieve('some-addon');
+
+      expect(config).to.exist;
+      expect(Object.keys(config)).to.have.lengthOf(0);
+    });
+
+    it('returns the values in the config when present', function () {
+      var source = readFixture('single-config-block.js');
+
+      var build = new EmberBuildConfigEditor(source);
+
+      var config = build.retrieve('some-addon');
+
+      expect(config).to.exist;
+      expect(config.booleanProperty).to.exist;
+      expect(config.booleanProperty).to.be.false;
+      expect(config.numericProperty).to.exist;
+      expect(config.numericProperty).to.equal(17);
+      expect(config.stringProperty).to.exist;
+      expect(config.stringProperty).to.equal('wow');
+    });
   });
 
-  it('returns an empty object when there is an empty config block', function () {
-    var source = readFixture('empty-config-block.js');
+  describe('Separate configuration', function() {
+    it('returns the values from a separate config when present', function() {
+      var source = readFixture('separate-config-block.js');
 
-    var build = new EmberBuildConfigEditor(source);
+      var build = new EmberBuildConfigEditor(source);
 
-    var config = build.retrieve('some-addon');
+      var config = build.retrieve('some-addon');
 
-    expect(config).to.exist;
-    expect(Object.keys(config)).to.have.lengthOf(0);
-  });
-
-  it('returns the values in the config when present', function () {
-    var source = readFixture('single-config-block.js');
-
-    var build = new EmberBuildConfigEditor(source);
-
-    var config = build.retrieve('some-addon');
-
-    expect(config).to.exist;
-    expect(config.booleanProperty).to.exist;
-    expect(config.booleanProperty).to.be.false;
-    expect(config.numericProperty).to.exist;
-    expect(config.numericProperty).to.equal(17);
-    expect(config.stringProperty).to.exist;
-    expect(config.stringProperty).to.equal('wow');
+      expect(config).to.exist;
+      expect(config.booleanProperty).to.exist;
+      expect(config.booleanProperty).to.be.false;
+      expect(config.numericProperty).to.exist;
+      expect(config.numericProperty).to.equal(17);
+      expect(config.stringProperty).to.exist;
+      expect(config.stringProperty).to.equal('wow');
+    });
   });
 
   it('returns undefined if the configuration cannot be found', function() {
