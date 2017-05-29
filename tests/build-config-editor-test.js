@@ -117,6 +117,20 @@ describe('Adds inline configuration', function () {
 
     astEquality(newBuild.code(), source);
   });
+
+  it('adds a key with properties to an empty addon configuration', function () {
+    var source = readFixture('default-addon.js');
+
+    var build = new EmberBuildConfigEditor(source);
+
+    var newBuild = build.edit('some-addon', {
+      booleanProperty: false,
+      numericProperty: 17,
+      stringProperty: 'wow'
+    });
+
+    astEquality(newBuild.code(), readFixture('single-config-block-addon.js'));
+  });
 });
 
 describe('Adds separate configuration', function() {
