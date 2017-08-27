@@ -147,6 +147,20 @@ describe('Adds separate configuration', function() {
 
     astEquality(newBuild.code(), readFixture('separate-config-block-different-values.js'));
   });
+
+  it('edits a non-inline config in an addon configuration', function() {
+    var source = readFixture('separate-config-block-addon.js');
+
+    var build = new EmberBuildConfigEditor(source);
+
+    var newBuild = build.edit('some-addon', {
+      booleanProperty: true,
+      numericProperty: 42,
+      stringProperty: 'amazing'
+    });
+
+    astEquality(newBuild.code(), readFixture('separate-config-block-different-values-addon.js'));
+  });
 });
 
 describe('Handles missing configuration', function() {
