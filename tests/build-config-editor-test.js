@@ -73,7 +73,7 @@ describe('Adds inline configuration', function () {
       stringProperty: 'wow'
     });
 
-    astEquality(newBuild.code(), readFixture('single-config-block.js'));
+    astEquality(newBuild.code(), readFixture('single-config-block-identifier-keys.js'));
   });
 
   it('changes the values of existing configuration properties', function () {
@@ -87,7 +87,7 @@ describe('Adds inline configuration', function () {
       stringProperty: 'wow'
     });
 
-    astEquality(newBuild.code(), readFixture('single-config-block.js'));
+    astEquality(newBuild.code(), readFixture('single-config-block-literal-keys.js'));
   });
 
   it('recognizes unquoted properties as matching', function () {
@@ -130,6 +130,20 @@ describe('Adds inline configuration', function () {
     });
 
     astEquality(newBuild.code(), readFixture('single-config-block-addon.js'));
+  });
+
+  it('uses identifiers when possible and literals otherwise for property keys', function() {
+    var source = readFixture('empty-config-block.js');
+
+    var build = new EmberBuildConfigEditor(source);
+
+    var newBuild = build.edit('some-addon', {
+      booleanProperty: false,
+      'numeric-property': 17,
+      'stringProperty': 'wow'
+    });
+
+    astEquality(newBuild.code(), readFixture('single-config-block-mixed.js'));
   });
 });
 
@@ -203,7 +217,7 @@ describe('Retrieves configuration', function () {
     });
 
     it('returns the values in the config when present', function () {
-      var source = readFixture('single-config-block.js');
+      var source = readFixture('single-config-block-literal-keys.js');
 
       var build = new EmberBuildConfigEditor(source);
 

@@ -6,9 +6,9 @@ module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
     // Add options here
     'some-addon': {
-      'booleanProperty': false,
-      'numericProperty': 17,
-      'stringProperty': 'wow'
+      booleanProperty: false,
+      numericProperty: 17,
+      stringProperty: 'wow'
     }
   });
 
