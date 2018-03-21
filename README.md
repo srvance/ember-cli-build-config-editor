@@ -29,7 +29,7 @@ Note: This package only handles flat configurations at this point.
 ### Querying configuration
 
 ```js
-var BuildConfigEditor = require('ember-cli-build-config-editor.js');
+var BuildConfigEditor = require('ember-cli-build-config-editor');
 var fs = require('fs');
 
 // Specify 'utf-8' to force it to be a string instead of a buffer
@@ -47,7 +47,7 @@ var config = build.retrieve('some-addon');
 Use this from your Ember blueprint to add or update configuration options in your `ember-cli-build.js`.
 
 ```js
-var BuildConfigEditor = require('ember-cli-build-config-editor.js');
+var BuildConfigEditor = require('ember-cli-build-config-editor');
 var fs = require('fs');
 
 // Specify 'utf-8' to force it to be a string instead of a buffer
